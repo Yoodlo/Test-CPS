@@ -1,1 +1,136 @@
 /* styles of TestCPS.html */
+
+html, body {
+	height: 100%;
+	background: linear-gradient(45deg, #212510, #562f5e);
+	background-size: 125% auto;
+    background-repeat: no-repeat;
+    background-position: center;
+	overflow: hidden;
+}
+
+h1 {
+	font-family: "kanit";
+	font-size: 50px;
+	color: #ffffff;
+	margin-top: 5%;
+	text-decoration: underline;
+}
+
+.mainCountainer {
+	height: calc(100vh);
+	display: flex;
+}
+
+.clickBox {
+	width: 50%;
+	height: 40%;
+	border: 1px solid #ffffff;
+	border-radius: 8%;
+	margin-left: 3%;
+	margin-top: 50px;
+	cursor: pointer;
+}
+
+.clickBoxLabel {
+	font-family: "Open Sans", sans-serif;
+	font-size: 35px;
+	color: #ffffff;
+	margin-top: 15%;
+	margin-left: 37%;
+	user-select: none;
+}
+
+.inputBox {
+	width: 20%;
+	height: 40%;
+	border: 1px solid #ffffff;
+	border-radius: 8%;
+	margin-left: 2%;
+	margin-top: 50px;
+}
+
+.timeInput {
+	margin-top: 0%;
+	margin-left: 25%;
+	width: 50%;
+	height: 60%; 
+	border-radius: 10px;
+	text-align: center;
+	font-family: "Open Sans", sans-serif;
+	font-weight: bold;
+	
+}
+
+.inputLabel {
+	font-family: "kanit", sans-serif;
+	font-size: 18px;
+	color: #ffffff;
+	margin-left: 40%;
+	margin-top: 0%;
+}
+
+.timerSpanBox {
+	display: grid;
+	justify-item: center;
+	border: 1px dashed #ffffff;
+	border-radius: 10px;
+	width: 92%;
+	height: 22%;
+	margin-top: 7%;
+	margin-left: 4%;
+}
+
+.clickStatBox {
+	display: grid;
+	justify-item: center;
+	border: 1px dashed #ffffff;
+	border-radius: 10px;
+	width: 92%;
+	height: 55%;
+	margin-top: 7%;
+	margin-left: 4%;
+}
+
+.outputLabel {
+	font-family: "kanit", sans-serif;
+	font-size: 15px;
+	color: #ffffff;
+	margin-left: 5%;
+	margin-top: 0%;
+}
+
+.statCountainer {
+	display: flex;
+}
+
+.clickOut {
+	margin-top: 0%;
+	margin-left: 5%;
+	width: 50%;
+	height: 60%; 
+	border-radius: 10px;
+	text-align: center;
+	font-family: "Open Sans", sans-serif;
+	font-weight: bold;
+}
+
+.clickOut2 {
+	margin-top: 0%;
+	margin-left: 10%;
+	width: 50%;
+	height: 60%; 
+	border-radius: 10px;
+	text-align: center;
+	font-family: "Open Sans", sans-serif;
+	font-weight: bold;
+}
+
+.linkBox {
+	width: 20%;
+	height: 40%;
+	border: 1px solid #ffffff;
+	border-radius: 8%;
+	margin-left: 2%;
+	margin-top: 50px;
+}
