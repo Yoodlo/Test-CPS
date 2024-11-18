@@ -22,20 +22,49 @@
 				<div class="clickStatBox">
 					<p class="inputLabel">Stats</label>
 					<div class="statCountainer">
-						<p class="outputLabel">Total clicks :</label>
-						<input type="number" value="0" id="ttClickOut" class="clickOut" name="ttClickOut" readonly>
-					</div>
-					<div class="statCountainer">
-						<p class="outputLabel">Click/sec :</label>
-						<input type="number" value="0" id="clickPerSecOut" class="clickOut2" name="clickPerSecOut" readonly>
+						<div class="statLabelCountainer">
+							<p class="outputLabel">Click/sec :</p>
+							<p class="outputLabel">Total clicks :</label>
+						</div>
+						<div class="statNumCountainer">
+							<input type="number" value="0" id="ttClickOut" class="clickOut" name="ttClickOut" readonly>
+							<input type="number" value="0" id="clickPerSecOut" class="clickOut2" name="clickPerSecOut" readonly>
+						</div>
 					</div>
 				</div>
 			</div>
 			<div class="clickBox" id="clickBox" onClick=newClick()>
-				<p class="clickBoxLabel" id="clickBoxLabel"> Click here </p>
+				<div id="clickHerelabelBox">
+					<p class="clickBoxLabel" id="clickBoxLabel"> Click here </p>
+				</div>
 			</div>
 			<div class="linkBox">
-				
+				<div class="leaderboardLabelBox">
+					<p for="timeInput" class="leaderboardLabel">Leaderboard</p>
+				</div>
+				<div class="leaderboardContainer">
+					<div class="usernameBox">
+						<p class="leaderboardParaBold" id="userT1">username1</p>
+						<p class="leaderboardParaBold" id="userT2">username2</p>
+						<p class="leaderboardParaBold" id="userT3">username3</p>
+						<p class="leaderboardParaBold" id="userT4">username4</p>
+						<p class="leaderboardParaBold" id="userT5">username5</p>
+					</div>
+					<div class="scoreBox">
+						<p class="leaderboardPara" id="scoreT1">score1</p>
+						<p class="leaderboardPara" id="scoreT2">score2</p>
+						<p class="leaderboardPara" id="scoreT3">score3</p>
+						<p class="leaderboardPara" id="scoreT4">score4</p>
+						<p class="leaderboardPara" id="scoreT5">score5</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="addScoreBox">
+			<p class="leaderboardLabel">Add you score to the leaderboard</p>
+			<div class="addLocalUsernameBox" id="addLocalUsernameBox">
+				<input type="text" placeholder="Username" class="usernameInput" minlength="4" maxlength="12" id="localUsernameIn">
+				<input type="button" value="Add" class="clickBoxButton" onClick=addLocalScore()>
 			</div>
 		</div>
 		<script src="script.js"></script>
