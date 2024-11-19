@@ -20,6 +20,8 @@ let clickPerSec = 0;
 let usernameIn = "";
 let ScoreIn = "";
 let addLocalUsernameLabel = document.getElementById("addLocalUsernameLabel");
+let localUsernameIn = document.getElementById("localUsernameIn");
+let oneGamePlayed = false;
 
 let userT1 = document.getElementById("userT1");
 let userT2 = document.getElementById("userT2");
@@ -42,6 +44,9 @@ function newClick() {
 			ttclick = 0;
 			ttClickOut.value = ttclick;
 			startGame();
+			if (oneGamePlayed == false) {
+				oneGamePlayed = true;
+			}
 		}
 	} else {
 		return;
@@ -170,17 +175,35 @@ function writeTopScores() {
 }
 
 function addLocalScore() {
-	username = usernameIn.value;
+	addLocalUsernameLabel.classList.remove("shake")
+	username = localUsernameIn.value;
 	Score = ttclick;
-	if (usernameIn.value != "") {
-		if (timerSpan == 10) {
-			sendScore();
-			alert("Your score has been submitted.");
+	if (gameRunning == false) {
+		if (oneGamePlayed != false) {
+			if (localUsernameIn.value != "") {
+				if (timerSpan == 10) {
+					addLocalUsernameLabel.innerText = "Add you score to the leaderboard";
+					addLocalUsernameLabel.style.color = "#ffffff";
+					sendScore();
+					alert("Your score has been submitted.");
+				} else {
+					addLocalUsernameLabel.innerText = "You can only upload scores for 10 secondes timer";
+					addLocalUsernameLabel.style.color = "#ff0000";
+					addLocalUsernameLabel.classList.add("shake");
+				}
+			} else {
+				addLocalUsernameLabel.innerText = "Please enter a username";
+				addLocalUsernameLabel.style.color = "#ff0000";
+				addLocalUsernameLabel.classList.add("shake");
+			}
 		} else {
-			alert("You can only submit scores for a 10 secondes timer.");
+			addLocalUsernameLabel.innerText = "No score registered yet";
+			addLocalUsernameLabel.style.color = "#ff0000";
+			addLocalUsernameLabel.classList.add("shake");
 		}
 	} else {
-		addLocalUsernameLabel.innerText = "Please enter a username";
-		addLocalUsernameLabel.color = "#ff00ff";
+		addLocalUsernameLabel.innerText = "Wait for the current game to end";
+		addLocalUsernameLabel.style.color = "#ff0000";
+		addLocalUsernameLabel.classList.add("shake");
 	}
 }
