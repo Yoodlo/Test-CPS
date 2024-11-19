@@ -19,6 +19,7 @@ let timeout = new Boolean(false);
 let clickPerSec = 0;
 let usernameIn = "";
 let ScoreIn = "";
+let addLocalUsernameLabel = document.getElementById("addLocalUsernameLabel");
 
 let userT1 = document.getElementById("userT1");
 let userT2 = document.getElementById("userT2");
@@ -31,15 +32,15 @@ let scoreT3 = document.getElementById("scoreT3");
 let scoreT4 = document.getElementById("scoreT4");
 let scoreT5 = document.getElementById("scoreT5");
 
-
 function newClick() {
-	console.log("*click*")
-	if (timeout == false) {
+    console.log("*click*");
+    if (timeout == false) {
 		if (gameRunning == true) {
-			ttclick ++;
+			ttclick++;
 			ttClickOut.value = ttclick;
 		} else {
 			ttclick = 0;
+			ttClickOut.value = ttclick;
 			startGame();
 		}
 	} else {
@@ -49,6 +50,7 @@ function newClick() {
 
 function restart() {
 	timeout = false;
+	clickBoxLabel.innerText = "Restart";
 }
 function startGame() {
 	console.log("game started")
@@ -61,45 +63,35 @@ function startGame() {
 function createChronometer(timerSpan) {
     let currentTime = 0;
     let intervalId = null;
-    
+
     function start() {
         if (intervalId) return;
-        
+
         intervalId = setInterval(() => {
             currentTime += 0.1;
-			clickBoxLabel.innerText = currentTime.toFixed(1);
-			clickPerSec = ttclick / currentTime.toFixed(1);
-            clickPerSecOut.value = clickPerSec.toFixed(1);            
+            clickBoxLabel.innerText = currentTime.toFixed(1);
+            clickPerSec = ttclick / currentTime.toFixed(1);
+            clickPerSecOut.value = clickPerSec.toFixed(1);
             if (currentTime >= timerSpan) {
                 stop();
             }
         }, 100);
-	}
+    }
 
     function stop() {
         clearInterval(intervalId);
         intervalId = null;
-		clickBoxPrinting();
-		gameRunning = false;
-		timeout = true;
-		alert("You clicked " + ttclick + " in " + timerSpan + " s. That's egal to " + clickPerSec.toFixed(1) + " clicks/sec.")
-		setTimeout(restart, 3000)
+        gameRunning = false;
+        timeout = true;
+        alert("You clicked " + ttclick + " in " + timerSpan + " s. That's equal to " + clickPerSec.toFixed(1) + " clicks/sec.");
+        restart();
     }
 
     return { start, stop };
 }
 
-function clickBoxPrinting() {
-	clickHerelabelBox.hidden = true;
-	actionCountainer.hidden = false;
-}	
-
-function addScoreBtnPressed() {
-	addLocalUsernameBox.hidden = !addLocalUsernameBox.hidden
-}
-
 function submitScore(username, score) {
-  fetch("https://script.google.com/macros/s/AKfycbxdUgVPyzFCEQPuPg4M-vql7F0omglNFIrNAa7HvPSZgg_gUhn82LTSKOcz1ucTz4JKtA/exec", {
+  fetch("https://flossy-leaf-curiosity.glitch.me", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -119,23 +111,45 @@ function submitScore(username, score) {
 }
 
 function sendScore() {
-	submitScore(usernameIn, ScoreIn);
+	submitScore(username, Score);
 }
 
 function getTopScores() {
-  fetch("https://script.google.com/macros/s/AKfycbxdUgVPyzFCEQPuPg4M-vql7F0omglNFIrNAa7HvPSZgg_gUhn82LTSKOcz1ucTz4JKtA/exec")
-    .then(response => response.json())
-    .then(data => {
-      // Log both usernames and scores for the top 5
-      data.slice(0, 5).forEach((entry, index) => {
-        console.log(`Rank ${index + 1}: ${entry.username} with ${entry.score} points`);
+  fetch('https://flossy-leaf-curiosity.glitch.me/', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(response => {
+    if (!response.ok) {
+      // If the response is not OK (e.g., 500 error), parse the error JSON and throw
+      return response.json().then(errorData => {
+        throw new Error(errorData.error || 'An error occurred');
       });
-    })
-    .catch(error => console.error("Error fetching leaderboard:", error));
+    }
+    return response.json();  // If the response is OK, return the JSON
+  })
+  .then(data => {
+    // Check if the data is in the correct format (an array of scores)
+    if (Array.isArray(data)) {
+      // Successfully received the leaderboard data (array)
+      console.log("Leaderboard:", data);
+      writeTopScores(data);  // Handle the data, for example, display it in the UI
+    } else {
+      throw new Error("Invalid data format received from the server");
+    }
+  })
+  .catch(error => {
+    // Handle any errors, including network issues or invalid JSON
+    console.error("Error fetching leaderboard:", error);
+  });
 }
 
+
 function writeTopScores() {
-  fetch("https://script.google.com/macros/s/AKfycbxdUgVPyzFCEQPuPg4M-vql7F0omglNFIrNAa7HvPSZgg_gUhn82LTSKOcz1ucTz4JKtA/exec")
+  fetch("https://flossy-leaf-curiosity.glitch.me")
+  
     .then(response => response.json())
     .then(data => {
       let top5 = data.slice(0, 5);
@@ -156,10 +170,17 @@ function writeTopScores() {
 }
 
 function addLocalScore() {
-	if (timerSpan == 10) {
-		sendScore();
-		alert("Your score has been submitted.");
+	username = usernameIn.value;
+	Score = ttclick;
+	if (usernameIn.value != "") {
+		if (timerSpan == 10) {
+			sendScore();
+			alert("Your score has been submitted.");
+		} else {
+			alert("You can only submit scores for a 10 secondes timer.");
+		}
 	} else {
-	alert("You can only submit scores for a 10 secondes timer.");
+		addLocalUsernameLabel.innerText = "Please enter a username";
+		addLocalUsernameLabel.color = "#ff00ff";
 	}
 }
