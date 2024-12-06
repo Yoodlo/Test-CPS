@@ -1,0 +1,90 @@
+html, body {
+	height: 100%;
+	background: linear-gradient(45deg, #212510, #562f5e);
+	background-size: 125% auto;
+    background-repeat: no-repeat;
+    background-position: center;
+	overflow: hidden;
+}
+
+.title {
+	display: flex;
+	justify-content: center;
+}
+
+h1 {
+	font-family: "kanit";
+	font-size: 30px;
+	color: #ffffff;
+	margin-top: 2%;
+	text-decoration: underline;
+}
+
+label {
+	text-align: center;
+	font-family: "Quicksand", sans-serif;
+	font-weight: 600;
+	color: #ffffff;
+}
+
+.clickBox {
+	border: solid 1px #000000;
+	width: 75%;
+	height: 50%;
+	border-radius: 10%;
+	padding: 30px;
+	background-color:  #fcfbc0;
+	margin-left: 10%;
+	overflow: hidden;
+}
+
+.button {
+	width: 50px;
+	height:50px;
+	border-radius: 50px;
+	background-color: #13ddac;
+	cursor: pointer;
+}
+
+.startButton {
+	border: 1px solid #000000;
+	width: 150px;
+	height: 29px; 
+	border-radius: 10px;
+	text-align: center;
+	font-family: "Quicksand", sans-serif;
+	font-weight: 600;
+	background-color: #ffffff;
+	margin-top: 1%;
+	cursor: pointer;
+}
+
+.modeSwitch {
+	border: 1px solid #000000;
+	width: 150px;
+	height: 29px; 
+	border-radius: 10px;
+	text-align: center;
+	font-family: "Quicksand", sans-serif;
+	font-weight: 600;
+	background-color: #ffffff;
+	margin-top: 1%;
+	cursor: pointer;
+	box-shadow: #3a2a43 1px 2px 1px;
+}
+
+.modeSwitch:hover {
+	background: linear-gradient(45deg, #ffffff, #b1b6ad);
+}
+.modeSwitch:active {
+	background: linear-gradient(-45deg, #ffffff, #b1b6ad);
+	box-shadow: #808080 0px 0px 0px;
+}
+
+.startButton:hover {
+	background: linear-gradient(45deg, #ffffff, #b1b6ad);
+}
+.startButton:active {
+	background: linear-gradient(-45deg, #ffffff, #b1b6ad);
+	box-shadow: #808080 0px 0px 0px;
+}
