@@ -14,16 +14,27 @@
 
 	<body>
 		<div class="title">
-			<h1>Aim Test (Test)</h1>
+			<div>
+				<input type="button" id="modeSwitch" value="GameMode : Time" class="modeSwitch" onClick="switchMode()" />
+			</div>
+			<h1>Aim Test</h1>
+			<div class="navigationCountainer" id="navigationBar">
+				<div class="navigationBar" onClick="openNavBox()">
+					<p class="navigationBarLabel">Navigation</p>
+					<div class="arrow down" id="navigationBarArrow"></div>
+				</div>
+				<div class="popUpTextBox" id="popUpTextBox" hidden>
+					<p class="navigationPopUpText" onClick="popUpGoInfoSccpp()" >CPS test</p>
+					<p class="navigationPopUpText" onClick="popUpGoInfoNouv()" >Aim Train</p>
+				</div>
+			</div>
 		</div>
 		<div class="clickBox">
 			<button value="" class="button" id="targetButton" onClick="pressed()" />
 		</div>
-		<div class="title">
+		<div class="startButtonBox">
 			<input type="button" value="start" class="startButton" onClick="start()" />
 		</div>
-		<label for="modeSwitch">Game Mode : </label>
-		<input type="button" id="modeSwitch" value="time" class="modeSwitch" onClick="switchMode()" />
 		<script src="script-aimTrain.js"></script>
 	</body>
 </html>
