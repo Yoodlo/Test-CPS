@@ -2,13 +2,9 @@
 
 let targetButton = document.getElementById("targetButton");
 let modeSwitch = document.getElementById("modeSwitch");
-let navigationBar = document.getElementById("navigationBar");
-let navigationBarArrow = document.getElementById("navigationBarArrow");
-let popUpTextBox = document.getElementById("popUpTextBox");
 let timerOut = document.getElementById("timerOut");
 let scoreOut = document.getElementById("scoreOut");
 let gameMode = "time";
-let navState = "close";
 let gameRunning = false;
 let score = 0;
 let timerSpan = 10;
@@ -68,23 +64,6 @@ function switchMode() {
 	} else {
 		modeSwitch.value = "GameMode : Time"
 		gameMode = "time";
-	}
-}
-
-function openNavBox() {
-	console.log("showing the navigation");
-	if (navState == "close") {
-		navigationBar.style.height = "100px";
-		popUpTextBox.hidden = false;
-		navState = "open";
-	} else if (navState == "open") {
-		navigationBar.style.height = "29px";
-		popUpTextBox.hidden = true;
-		navState = "close";
-	} else {
-		navigationBar.style.height = "29px";
-		popUpTextBox.hidden = false;
-		navState = "close";
 	}
 }
 

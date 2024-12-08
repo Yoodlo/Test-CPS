@@ -4,10 +4,25 @@
 		<title>Test CPS</title>
 		<meta charset="UTF-8">
 		<link rel="stylesheet" type="text/css" href="styles.css">
+		<link rel="stylesheet" type="text/css" href="styles-navigation.css">
 		<link rel="icon" type="image/x-icon" href="favicon.ico">
 	</head>
 	<body>
-		<h1 align="center">Test CPS</h1>
+		<div class="titleCountainer">
+			<h1 align="center">Test CPS</h1>
+			<div class="navigationSpacingCounatiner">
+				<div class="navigationCountainer" id="navigationBar">
+					<div class="navigationBar" onClick="openNavBox()">
+						<p class="navigationBarLabel">Navigation</p>
+						<div class="arrow down" id="navigationBarArrow"></div>
+					</div>
+					<div class="popUpTextBox" id="popUpTextBox" hidden>
+						<p class="navigationPopUpText" onClick="goIndex()" >CPS test</p>
+						<p class="navigationPopUpText" onClick="goAim()" >Aim Train</p>
+					</div>
+				</div>
+			</div>
+		</div>
 		<div class="mainCountainer">
 			<div class="inputBox">
 				<div class="timerSpanBox">
@@ -63,5 +78,6 @@
 			</div>
 		</div>
 		<script src="script.js"></script>
+		<script src="script-navigation.js"></script>
 	</body>
 </html>
