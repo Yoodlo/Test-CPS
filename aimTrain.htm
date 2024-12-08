@@ -29,11 +29,22 @@
 				</div>
 			</div>
 		</div>
-		<div class="clickBox">
-			<button value="" class="button" id="targetButton" onClick="pressed()" />
+		<div class="mainCountainer">
+			<div class="clickBox">
+				<p class="timerOut" id="timerOut">10</p>
+				<input type="button" value="" class="button" id="targetButton" onClick="pressed()" />
+			</div>
 		</div>
 		<div class="startButtonBox">
+			<div class="outputBox">
+				<p class="outputBoxLabel">Timer : </p>
+				<input type="number" value="10" class="invisibleIn" min="1" id="timerIn" />
+			</div>
 			<input type="button" value="start" class="startButton" onClick="start()" />
+			<div class="outputBox">
+				<p class="outputBoxLabel">Score : </p>
+				<input type="number" value="0" class="invisibleIn" min="1" id="scoreOut" readonly />
+			</div>
 		</div>
 		<script src="script-aimTrain.js"></script>
 	</body>

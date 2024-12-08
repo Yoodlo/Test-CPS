@@ -57,6 +57,7 @@ function restart() {
 	timeout = false;
 	clickBoxLabel.innerText = "Restart";
 }
+
 function startGame() {
 	console.log("game started")
 	gameRunning = true;

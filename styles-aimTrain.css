@@ -108,7 +108,7 @@ label {
 .clickBox {
 	border: solid 1px #000000;
 	width: 75%;
-	height: 50%;
+	height: 70%;
 	border-radius: 10%;
 	padding: 30px;
 	background-color:  #fcfbc0;
@@ -128,7 +128,7 @@ label {
 .startButton {
 	border: 1px solid #000000;
 	width: 150px;
-	height: 29px; 
+	height: 35px; 
 	border-radius: 10px;
 	text-align: center;
 	font-family: "Quicksand", sans-serif;
@@ -167,3 +167,56 @@ label {
 	background: linear-gradient(-45deg, #ffffff, #b1b6ad);
 	box-shadow: #808080 0px 0px 0px;
 }
+
+.timerOut {
+	text-align: center;
+	font-family: "Quicksand", sans-serif;
+	font-weight: 600;
+	font-size: 45px;
+	color: #000000;
+	margin-top: 0.1%;
+}
+
+.mainCountainer {
+	width: 100%;
+	height: 70%;
+	display: flex;
+	align-content: space-around;
+}
+
+.outputBox {
+	display: flex;
+	border: 1px solid #000000;
+	width: 150px;
+	height: 29px; 
+	border-radius: 10px;
+	text-align: center;
+	font-family: "Quicksand", sans-serif;
+	font-weight: 600;
+	background-color: #ffffff;
+	cursor: pointer;
+	margin-top: 25px;
+	align-items: center;
+	justify-content: center;
+}
+
+.invisibleIn {
+	border: none;
+	background: transparent;
+	width: 50px;
+	height: 29px;
+	text-align: center;
+	font-family: "Quicksand", sans-serif;
+	font-size: 15px;
+	font-weight: 600;
+	color: #000000;
+	margin-left: 10px;
+	user-select: none;
+}
+
+.outputBoxLabel {
+	font-family: "Quicksand", sans-serif;
+	font-weight: 600;
+	color: #000000;
+}
+

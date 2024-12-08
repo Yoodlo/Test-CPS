@@ -5,8 +5,13 @@ let modeSwitch = document.getElementById("modeSwitch");
 let navigationBar = document.getElementById("navigationBar");
 let navigationBarArrow = document.getElementById("navigationBarArrow");
 let popUpTextBox = document.getElementById("popUpTextBox");
+let timerOut = document.getElementById("timerOut");
+let scoreOut = document.getElementById("scoreOut");
 let gameMode = "time";
 let navState = "close";
+let gameRunning = false;
+let score = 0;
+let timerSpan = 10;
 
 navigationBar.addEventListener("mouseover", function(){
   navigationBarArrow.classList.add("arrowHovered");
@@ -14,6 +19,11 @@ navigationBar.addEventListener("mouseover", function(){
 
 navigationBar.addEventListener("mouseout", function(){
   navigationBarArrow.classList.remove("arrowHovered");
+});
+
+timerIn.addEventListener("change", function(){
+	if (gameRunning == false)
+		timerOut.textContent = timerIn.value;
 });
 
 function randX(min, max) {
@@ -26,13 +36,25 @@ function randY(min, max) {
 
 function start() {
 	console.log("start");
-	targetButton.style.marginLeft = randX(8, 89) + "%";
-	targetButton.style.marginTop = randY(11, 31) + "%";
+	timerSpan = timerIn.value;
+	gameRunning = true;
+	score = 0;
+	scoreOut.value = score;
+	targetButton.style.marginLeft = randX(0, 95) + "%";
+	targetButton.style.marginTop = randY(0, 20) + "%";
+	chronometer = createChronometer(timerSpan);
+	chronometer.start();
 }
 
 function pressed() {
-	targetButton.style.marginLeft = randX(8, 89) + "%";
-	targetButton.style.marginTop = randY(11, 31) + "%";
+	if (gameRunning == true) {
+		targetButton.style.marginLeft = randX(0, 95) + "%";
+		targetButton.style.marginTop = randY(0, 20) + "%";
+		score++;
+		scoreOut.value = score;
+	} else {
+		start();
+	}
 }
 
 function switchMode() {
@@ -64,4 +86,32 @@ function openNavBox() {
 		popUpTextBox.hidden = false;
 		navState = "close";
 	}
+}
+
+function createChronometer(timerSpan) {
+    let currentTime = 0;
+    let intervalId = null;
+
+    function start() {
+        if (intervalId) return;
+
+        intervalId = setInterval(() => {
+            currentTime += 0.1;
+            timerOut.innerText = (timerSpan - currentTime).toFixed(1);
+            if (currentTime >= timerSpan) {
+                stop();
+            }
+        }, 100);
+    }
+
+    function stop() {
+        clearInterval(intervalId);
+		timerOut.innerText = 0.0;
+        intervalId = null;
+        gameRunning = false;
+        alert("Your score is : " + score + " in " + timerSpan + " seconds");
+		timerOut.innerText = timerIn.value;
+    }
+
+    return { start, stop };
 }
